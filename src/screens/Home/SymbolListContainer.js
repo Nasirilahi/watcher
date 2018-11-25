@@ -27,23 +27,28 @@ export default class SymbolsListContainer extends PureComponent {
     });
   };
 
+  renderHeader = () => <ListHeader sortWatchList={this.doRefreshList} />;
+
+  renderListItem = ({ item, index }) => {
+    const { deleteSymbol, entities } = this.props;
+    return (
+      <ListItem
+        item={item}
+        symbolKey={entities[index]}
+        index={index}
+        deleteSymbol={deleteSymbol}
+      />
+    );
+  };
+
   render() {
-    const { watchSymbols, deleteSymbol, entities } = this.props;
+    const { watchSymbols } = this.props;
     const { refresh, refreshing } = this.state;
     return (
       <FlatList
         data={watchSymbols}
-        ListHeaderComponent={() => (
-          <ListHeader sortWatchList={this.doRefreshList} />
-        )}
-        renderItem={({ item, index }) => (
-          <ListItem
-            item={item}
-            symbolKey={entities[index]}
-            index={index}
-            deleteSymbol={deleteSymbol}
-          />
-        )}
+        ListHeaderComponent={this.renderHeader}
+        renderItem={this.renderListItem}
         style={styles.listContainer}
         keyExtractor={this.keyExtractor}
         extraData={refresh}

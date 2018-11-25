@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { SafeAreaView } from "react-native";
 import { func, shape, bool, arrayOf, string } from "prop-types";
 import { bindActionCreators } from "redux";
@@ -27,7 +27,7 @@ import {
 // // Disconnect from the channel
 // // socket.on('disconnect', () => console.log('Disconnected.'))
 
-class HomeScreen extends Component {
+class HomeScreen extends PureComponent {
   static navigationOptions = {
     title: "Home",
     headerStyle: styles.headerStyle,
