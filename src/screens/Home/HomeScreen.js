@@ -37,7 +37,7 @@ class HomeScreen extends PureComponent {
     }
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     const { getSymbols, rehydrated, symbols } = this.props;
     // no need to call entities list everytime just check if list already has been fetched.
     if (rehydrated && symbols.length <= 0) {
@@ -114,11 +114,15 @@ HomeScreen.defaultProps = {
   refreshSymbolsList: () => {}
 };
 
-const mapStateProps = ({
-  symbolsList: { isLoading, symbols },
-  watchList: { watchSymbols, entities },
-  _persist: { rehydrated }
-}) => ({ isLoading, watchSymbols, entities, rehydrated, symbols });
+const mapStateProps = (state) => {
+  const {
+    symbolsList: { isLoading, symbols },
+    watchList: { watchSymbols, entities },
+    _persist: { rehydrated }
+  } = state;
+  return { isLoading, watchSymbols, entities, rehydrated, symbols };
+}
+
 const mapDispatchToProps = dispatch => ({
   getSymbols: bindActionCreators(getSymbolsList, dispatch),
   removeSymbol: bindActionCreators(removeSymbolAction, dispatch),

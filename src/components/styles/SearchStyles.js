@@ -4,7 +4,7 @@ export default StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     marginHorizontal: 15,
-    height: 40,
+    height: 50,
     alignItems: "center",
     padding: 5,
     marginBottom: 10,

@@ -1,13 +1,24 @@
-import { createStackNavigator } from "react-navigation";
-import ExampleRoutes from "./routes/Routes";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "../screens/Home";
+import AddSymbol from "../screens/AddSymbol";
 
-export default () =>
-  createStackNavigator(
-    {
-      ...ExampleRoutes
-    },
-    {
-      mode: "modal",
-      initialRouteName: "Home"
-    }
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="AddSymbol" component={AddSymbol} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
+}
+
+export default App;

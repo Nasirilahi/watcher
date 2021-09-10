@@ -7,6 +7,8 @@ import styles from "./styles/ListItemStyles";
 export default class ListItem extends PureComponent {
   render() {
     const { deleteSymbol, item, symbolKey, index } = this.props;
+    console.log('item', item);
+    console.log('symbolKey', symbolKey);
     const { symbol, companyName, latestPrice, change, changePercent } = item[
       symbolKey
     ];

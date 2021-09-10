@@ -31,7 +31,9 @@ const getSymbolData = symbol => dispatch => {
       }
       return dispatch(symbolDataFailure());
     })
-    .catch(err => dispatch(symbolDataFailure()));
+    .catch(err => {
+      dispatch(symbolDataFailure())
+    });
 };
 
 const removeSymbol = symbolIndexToRemove => dispatch =>

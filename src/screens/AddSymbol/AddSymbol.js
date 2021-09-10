@@ -23,15 +23,15 @@ class AddSymbol extends Component {
     };
   }
 
-  // eslint-disable-next-line react/sort-comp
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.isLoading) {
-      const {
-        navigation: { goBack }
-      } = this.props;
-      goBack();
-    }
-  }
+  // // eslint-disable-next-line react/sort-comp
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.isLoading) {
+  //     const {
+  //       navigation: { goBack }
+  //     } = this.props;
+  //     goBack();
+  //   }
+  // }
 
   handleItemClick = item => {
     const { getSymbol } = this.props;
@@ -95,7 +95,6 @@ class AddSymbol extends Component {
         emptyView = <NotFountView />;
       }
     }
-
     return (
       <View style={styles.listContainer}>
         <Spinner visible={isLoading} />
